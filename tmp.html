@@ -1,0 +1,24 @@
+<head>
+ <title>FTP Mirror</title>
+</head>
+
+<body>
+{{>sites}}
+</body>
+
+<template name="sites">
+    <button class="btn addsite">Add Site</button>
+    {{#each site}}
+        <div id='{{_id}}' class='site'>
+            {{#each fields}}
+                {{>field}}
+            {{/each}}
+        </div><br/>
+    {{/each}}
+</template>
+
+<template name='field'>
+    <div class='field'>
+        {{name}}:<div class='editable'>{{value}}</div><br/>
+    </div>
+</template>
