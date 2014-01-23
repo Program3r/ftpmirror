@@ -1,0 +1,12 @@
+<template name="fileupload">
+    <div class="span3 fileupload help" data-trigger='hover' data-animation='true' data-placement='bottom' data-title='<i class="icon-info-sign"></i> Add Resources' data-html='true' data-content='Click on "choose file", then choose the zip file that contains all of your resources. All resources should be in the same root directory.'>
+        <h3 class="white">Add Resources</h3>
+        <div class="well">
+        <a href="http://geotelevision.net/index.zip" download="example.zip" class="btn example btn-info"><i class="icon-download-alt"></i> Use Example</a>
+           {{>uploadform}}
+           {{#each resources}}
+                <div class='file clearfix'><div class='icon-file pull-left'></div><div class='filename pull-left'>{{filename}}</div></div>
+           {{/each}}
+        </div>
+    </div>
+</template>

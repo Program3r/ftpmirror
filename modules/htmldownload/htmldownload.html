@@ -1,0 +1,11 @@
+<template name="htmldownload">
+    <h3 class="white">Download Html</h3>
+    <div class="span3 help" data-trigger='hover' data-animation='true' data-placement='bottom' data-title='<i class="icon-info-sign"></i> Download Html' data-html='true' data-content='Dowload all of the html files needed for sending emails.'>
+        <div class="well">
+            <button class="btn btn-info download"><i class="icon-refresh"></i> Generate Html Files</button>
+            {{#each downloads}}
+                <a  class="btn dlfile" href="{{host}}/download/storage/{{filename}}" download="{{filename}}"><i class="icon-download-alt"></i> {{filename}}</a>
+            {{/each}}
+        </div>
+    </div>
+</template>

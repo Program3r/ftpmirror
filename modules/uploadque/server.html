@@ -1,0 +1,20 @@
+<template name="uploadque">
+<div class="span3 help" data-trigger='hover' data-animation='true' data-placement='bottom' data-title='<i class="icon-info-sign"></i> Upload Resources' data-html='true' data-content='Uploads all processed resouces to all domain names.'>
+    <h3 class="white">Upload Resources</h3>
+    <div class="well">
+        <button class="uploadall btn btn-info"><i class="icon-upload"></i> Upload All</button>
+        {{#each inque}}
+            {{>progress}}
+        {{/each}}
+    </div>
+</div>
+</template>
+
+<template name="progress">
+
+    <h5>{{fields.Name.value}}</h5>
+    <div class="progress progress-striped active">
+        <div class="bar" style="width: {{progress}}%"></div>
+    </div>
+
+</template>

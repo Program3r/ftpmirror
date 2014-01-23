@@ -1,0 +1,41 @@
+<template name="preview">
+    <div id="preview" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Preview</h3>
+        </div>
+        <div class="modal-body">
+            <ul id="myTab" class="nav nav-tabs">
+              <li class="active"><a href="#home" data-toggle="tab">Rendered</a></li>
+              <!--<li class=""><a href="#profile" data-toggle="tab">Original</a></li>-->
+            </ul>
+
+            <div id="myTabContent" class="tab-content">
+              <div class="tab-pane fade active in" id="rendered">
+                <iframe src="{{previewloc}}"></iframe>
+              </div>
+              <div class="tab-pane fade" id="original">
+                  <div class="accordion" id="sites">
+                    {{#each previewfile}}
+                        <div id="{{_id}}" class="accordion-group site">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle {{testclass}}" data-toggle="collapse" data-parent="#sites" href="#col-{{_id}}">
+                                    <span class="fullbar"><i class='icon-file'></i></span>
+                                </a>
+                            </div>
+                            <div id="col-{{_id}}" class="accordion-body collapse {{wasrendered}}">
+                                <div class="accordion-inner">
+                                    {{filedata}}
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
+    </div>
+</template>

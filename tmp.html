@@ -3,22 +3,50 @@
 </head>
 
 <body>
-{{>sites}}
+<div class="span4 help" data-trigger='hover' data-animation='true' data-placement='bottom' data-title='<i class="icon-info-sign"></i> Add Sites' data-html='true' data-content='Click on "Add Site", then test your connection to the server. Click on the bar to close and zoom out.'>
+    <h3 class="white">Add Sites</h3>
+    <div class="well">
+        {{>sites}}
+    </div>
+</div>
+{{>fileupload}}
+{{>uploadque}}
+{{>htmldownload}}
+{{>preview}}
 </body>
 
 <template name="sites">
-    <button class="btn addsite">Add Site</button>
-    {{#each site}}
-        <div id='{{_id}}' class='site'>
-            {{#each fields}}
-                {{>field}}
-            {{/each}}
-        </div><br/>
-    {{/each}}
+    <button class="btn addsite btn-info btn-control"><i class='icon-plus-sign'></i> Add Site</button><a href="#preview" role="button" data-toggle="modal" class='btn btn-control preview btn-info'><i class='icon-eye-open'></i> Preview</a>
+    <div class="accordion" id="sites">
+        {{#each site}}
+            <div id="{{_id}}" class="accordion-group site">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle {{testclass}}" data-toggle="collapse" data-parent="#sites" href="#col-{{_id}}">
+                        <span class="fullbar"><i class='{{testicon}}'></i> {{#if namefield}}{{namefield}}{{else}}Empty{{/if}}</span><span class="pull-right remove"><i class="icon-remove"></i></span>
+                    </a>
+                </div>
+                <div id="col-{{_id}}" class="accordion-body collapse {{wasrendered}}">
+                    <div class="accordion-inner">
+                        <button class='btn test {{testclass}}'>Test Settings <i class='{{testicon}}'></i></button>
+                        {{#each fields}}
+                            {{>field}}
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
 </template>
 
 <template name='field'>
     <div class='field'>
-        {{name}}:<div class='editable'>{{value}}</div><br/>
+        <span>{{name}}</span>:<span class='editable'>{{value}}</span><br/>
     </div>
+</template>
+
+<template name="uploadform">
+    <form action="http://192.168.1.89:3555/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="zipfile" accept="application/zip">
+        <button type="submit" class='btn btn-info'><i class='icon-upload'></i> Upload</button>
+    </form>
 </template>
